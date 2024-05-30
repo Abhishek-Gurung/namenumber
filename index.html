@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Name Numerology calculator</title>
+    <style>
+	body {
+  background-image: url('bg.gif');
+  background-attachment: fixed;
+  color: white;
+}
+	input{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 150px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+#corn{
+ border-radius: 25px;
+  border: 2px solid #A020F0;
+  padding: 20px; 
+  background-color:rgb(120,170,100,30%);
+  }
+
+	</style>
+  </head>
+
+  <body>
+    <header>
+    <h1>Name Number Calculator</h1>
+    </header>
+    <div class="nav" id="corn">
+      <h3>Ashwika's Pythagoras and Chaldean Calculator</h3>
+      <p>Enter the name:</p>
+      <div class="content">
+      <input type="text" placeholder="Enter Your Name">
+      <button onclick="calculate()">Calculate</button>
+      <div class="result"></div>
+      </div>
+    </div>
+<br>
+
+    <script>
+      var PYTHAGOREAN = {
+        'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9,
+        'j': 10, 'k': 11, 'l': 12, 'm': 13, 'n': 14, 'o': 15, 'p': 16, 'q': 17, 'r': 18,
+        's': 19, 't': 20, 'u': 21, 'v': 22, 'w': 23, 'x': 24, 'y': 25, 'z': 26
+      };
+
+      var CHALDEAN = {
+        'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 8, 'g': 3, 'h': 5, 'i': 1,
+        'j': 1, 'k': 2, 'l': 3, 'm': 4, 'n': 5, 'o': 7, 'p': 8, 'q': 1, 'r': 2,
+        's': 3, 't': 4, 'u': 6, 'v': 6, 'w': 6, 'x': 5, 'y': 1, 'z': 7
+      };
+
+      // Set up HTML elements
+      var input = document.querySelector('input');
+      var button = document.querySelector('button');
+      var result = document.querySelector('.result');
+
+      // Metode
+      function calculate(){
+        // Empty HTML
+        result.innerHTML = '';
+
+        // Print results
+        printResult(PYTHAGOREAN, 'Pythagoras');
+        printResult(CHALDEAN, 'Chaldean');
+      }
+
+      // Print list
+      function printResult(list, text) {
+        var letters = input.value.toLowerCase().replace(/[^0-9a-z]/g, '').split('');
+        var sum = 0, l, i;
+        for(i = 0; i < letters.length; i++){
+          // Extract letter from array
+          l = letters[i];
+
+          // Lookup or convert letter and add to sum
+          sum += list[l] || parseInt(l);
+        }
+
+        // Write the sum to screen
+        result.innerHTML += '<div class="result-text">' + text + ' ' + sum + '</div>';
+      }
+
+    </script>
+
+    <div class="num" id="corn">
+      <h3>Pythagoras Numerology</h3>
+
+        <p style="letter-spacing: 18px;">
+		1 2 3 4 5 6 7 8 9</p>
+		<p style="letter-spacing: 17px;">
+		A B C D E F G H I<BR>
+		J K L M N O P Q R<BR>
+		S T U W X Y Z
+        </p>
+        <br>
+      <h3>Chaldean Numerology</h3>
+
+        <p style="letter-spacing: 20px;">
+		1 2 3 4 5 6 7 8</p>
+          <p style="letter-spacing: 19px;">
+		A B C D E U O F<BR>
+		I K G M H V Z P<BR>
+		J R L T N W<BR>
+		Q   S   X<BR>
+		Y
+        </p>
+        
+    </div>
+  </body>
+</html>
